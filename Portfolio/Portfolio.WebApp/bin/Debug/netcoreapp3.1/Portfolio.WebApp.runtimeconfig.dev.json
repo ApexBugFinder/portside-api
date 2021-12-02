@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "/home/apexbugfinder/.dotnet/store/|arch|/|tfm|",
+      "/home/apexbugfinder/.nuget/packages"
+    ]
+  }
+}
