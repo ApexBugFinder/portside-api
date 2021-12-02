@@ -1,0 +1,82 @@
+<<<<<<< HEAD
+D:/Current Projects/portfolio/BackEnd/Portfolio/Portfolio.PorfolioDomain.Core/bin/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.deps.json
+D:/Current Projects/portfolio/BackEnd/Portfolio/Portfolio.PorfolioDomain.Core/bin/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.dll
+D:/Current Projects/portfolio/BackEnd/Portfolio/Portfolio.PorfolioDomain.Core/bin/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.pdb
+D:/Current Projects/portfolio/BackEnd/Portfolio/Portfolio.PorfolioDomain.Core/obj/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.csprojAssemblyReference.cache
+D:/Current Projects/portfolio/BackEnd/Portfolio/Portfolio.PorfolioDomain.Core/obj/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.AssemblyInfoInputs.cache
+D:/Current Projects/portfolio/BackEnd/Portfolio/Portfolio.PorfolioDomain.Core/obj/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.AssemblyInfo.cs
+D:/Current Projects/portfolio/BackEnd/Portfolio/Portfolio.PorfolioDomain.Core/obj/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.csproj.CoreCompileInputs.cache
+D:/Current Projects/portfolio/BackEnd/Portfolio/Portfolio.PorfolioDomain.Core/obj/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.dll
+D:/Current Projects/portfolio/BackEnd/Portfolio/Portfolio.PorfolioDomain.Core/obj/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.pdb
+D:/Current Projects/portfolio/BackEnd/Portfolio/Portfolio.PorfolioDomain.Core/bin/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.runtimeconfig.json
+D:/Current Projects/portfolio/BackEnd/Portfolio/Portfolio.PorfolioDomain.Core/bin/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.runtimeconfig.dev.json
+D:/Current Projects/portfolio/BackEnd/Portfolio/Portfolio.PorfolioDomain.Core/obj/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.genruntimeconfig.cache
+/home/apexbugfinder/Documents/codePractice/portfolio/Portfolio/Portfolio.PorfolioDomain.Core/bin/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.deps.json
+/home/apexbugfinder/Documents/codePractice/portfolio/Portfolio/Portfolio.PorfolioDomain.Core/bin/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.runtimeconfig.json
+/home/apexbugfinder/Documents/codePractice/portfolio/Portfolio/Portfolio.PorfolioDomain.Core/bin/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.runtimeconfig.dev.json
+/home/apexbugfinder/Documents/codePractice/portfolio/Portfolio/Portfolio.PorfolioDomain.Core/bin/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.dll
+/home/apexbugfinder/Documents/codePractice/portfolio/Portfolio/Portfolio.PorfolioDomain.Core/bin/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.pdb
+/home/apexbugfinder/Documents/codePractice/portfolio/Portfolio/Portfolio.PorfolioDomain.Core/obj/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.csprojAssemblyReference.cache
+/home/apexbugfinder/Documents/codePractice/portfolio/Portfolio/Portfolio.PorfolioDomain.Core/obj/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.AssemblyInfoInputs.cache
+/home/apexbugfinder/Documents/codePractice/portfolio/Portfolio/Portfolio.PorfolioDomain.Core/obj/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.AssemblyInfo.cs
+/home/apexbugfinder/Documents/codePractice/portfolio/Portfolio/Portfolio.PorfolioDomain.Core/obj/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.csproj.CoreCompileInputs.cache
+/home/apexbugfinder/Documents/codePractice/portfolio/Portfolio/Portfolio.PorfolioDomain.Core/obj/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.dll
+/home/apexbugfinder/Documents/codePractice/portfolio/Portfolio/Portfolio.PorfolioDomain.Core/obj/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.pdb
+/home/apexbugfinder/Documents/codePractice/portfolio/Portfolio/Portfolio.PorfolioDomain.Core/obj/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.genruntimeconfig.cache
+E:/Current Projects/portfolio/BackEnd/Portfolio/Portfolio.PorfolioDomain.Core/bin/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.deps.json
+E:/Current Projects/portfolio/BackEnd/Portfolio/Portfolio.PorfolioDomain.Core/bin/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.runtimeconfig.json
+E:/Current Projects/portfolio/BackEnd/Portfolio/Portfolio.PorfolioDomain.Core/bin/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.runtimeconfig.dev.json
+E:/Current Projects/portfolio/BackEnd/Portfolio/Portfolio.PorfolioDomain.Core/bin/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.dll
+E:/Current Projects/portfolio/BackEnd/Portfolio/Portfolio.PorfolioDomain.Core/bin/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.pdb
+E:/Current Projects/portfolio/BackEnd/Portfolio/Portfolio.PorfolioDomain.Core/obj/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.Properties.Resources.resources
+E:/Current Projects/portfolio/BackEnd/Portfolio/Portfolio.PorfolioDomain.Core/obj/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.csproj.GenerateResource.cache
+E:/Current Projects/portfolio/BackEnd/Portfolio/Portfolio.PorfolioDomain.Core/obj/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.AssemblyInfoInputs.cache
+E:/Current Projects/portfolio/BackEnd/Portfolio/Portfolio.PorfolioDomain.Core/obj/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.AssemblyInfo.cs
+E:/Current Projects/portfolio/BackEnd/Portfolio/Portfolio.PorfolioDomain.Core/obj/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.csproj.CoreCompileInputs.cache
+E:/Current Projects/portfolio/BackEnd/Portfolio/Portfolio.PorfolioDomain.Core/obj/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.dll
+E:/Current Projects/portfolio/BackEnd/Portfolio/Portfolio.PorfolioDomain.Core/obj/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.pdb
+E:/Current Projects/portfolio/BackEnd/Portfolio/Portfolio.PorfolioDomain.Core/obj/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.genruntimeconfig.cache
+E:/Current Projects/portfolio/BackEnd/Portfolio/Portfolio.PorfolioDomain.Core/obj/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.csprojAssemblyReference.cache
+=======
+/home/apexbugfinder/Documents/codePractice/portfolioBackEnd/portfolio/Portfolio/Portfolio.PorfolioDomain.Core/bin/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.deps.json
+/home/apexbugfinder/Documents/codePractice/portfolioBackEnd/portfolio/Portfolio/Portfolio.PorfolioDomain.Core/bin/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.runtimeconfig.json
+/home/apexbugfinder/Documents/codePractice/portfolioBackEnd/portfolio/Portfolio/Portfolio.PorfolioDomain.Core/bin/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.runtimeconfig.dev.json
+/home/apexbugfinder/Documents/codePractice/portfolioBackEnd/portfolio/Portfolio/Portfolio.PorfolioDomain.Core/bin/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.dll
+/home/apexbugfinder/Documents/codePractice/portfolioBackEnd/portfolio/Portfolio/Portfolio.PorfolioDomain.Core/bin/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.pdb
+/home/apexbugfinder/Documents/codePractice/portfolioBackEnd/portfolio/Portfolio/Portfolio.PorfolioDomain.Core/obj/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.Properties.Resources.resources
+/home/apexbugfinder/Documents/codePractice/portfolioBackEnd/portfolio/Portfolio/Portfolio.PorfolioDomain.Core/obj/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.csproj.GenerateResource.cache
+/home/apexbugfinder/Documents/codePractice/portfolioBackEnd/portfolio/Portfolio/Portfolio.PorfolioDomain.Core/obj/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.AssemblyInfoInputs.cache
+/home/apexbugfinder/Documents/codePractice/portfolioBackEnd/portfolio/Portfolio/Portfolio.PorfolioDomain.Core/obj/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.AssemblyInfo.cs
+/home/apexbugfinder/Documents/codePractice/portfolioBackEnd/portfolio/Portfolio/Portfolio.PorfolioDomain.Core/obj/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.csproj.CoreCompileInputs.cache
+/home/apexbugfinder/Documents/codePractice/portfolioBackEnd/portfolio/Portfolio/Portfolio.PorfolioDomain.Core/obj/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.dll
+/home/apexbugfinder/Documents/codePractice/portfolioBackEnd/portfolio/Portfolio/Portfolio.PorfolioDomain.Core/obj/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.pdb
+/home/apexbugfinder/Documents/codePractice/portfolioBackEnd/portfolio/Portfolio/Portfolio.PorfolioDomain.Core/obj/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.genruntimeconfig.cache
+>>>>>>> 728c3f5f879b81f95364c093da6ba64cbcedc8de
+/home/apexbugfinder/Documents/codePractice/portfolioBackEnd/portfolio/Portfolio/Portfolio.PorfolioDomain.Core/obj/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.csproj.AssemblyReference.cache
+E:/Current Projects/portfolio/BackEnd/Portfolio/Portfolio.PorfolioDomain.Core/bin/Debug/netcoreapp3.1/portfolio.IDP.Views.dll
+E:/Current Projects/portfolio/BackEnd/Portfolio/Portfolio.PorfolioDomain.Core/bin/Debug/netcoreapp3.1/portfolio.IDP.Views.pdb
+E:/Current Projects/portfolio/BackEnd/Portfolio/Portfolio.PorfolioDomain.Core/bin/Debug/netcoreapp3.1/portfolio.IDP.deps.json
+E:/Current Projects/portfolio/BackEnd/Portfolio/Portfolio.PorfolioDomain.Core/bin/Debug/netcoreapp3.1/portfolio.IDP.runtimeconfig.json
+E:/Current Projects/portfolio/BackEnd/Portfolio/Portfolio.PorfolioDomain.Core/bin/Debug/netcoreapp3.1/portfolio.IDP.runtimeconfig.dev.json
+E:/Current Projects/portfolio/BackEnd/Portfolio/Portfolio.PorfolioDomain.Core/bin/Debug/netcoreapp3.1/appsettings.Development.json
+E:/Current Projects/portfolio/BackEnd/Portfolio/Portfolio.PorfolioDomain.Core/bin/Debug/netcoreapp3.1/appsettings.json
+E:/Current Projects/portfolio/BackEnd/Portfolio/Portfolio.PorfolioDomain.Core/bin/Debug/netcoreapp3.1/portfolio.IDP.dll
+E:/Current Projects/portfolio/BackEnd/Portfolio/Portfolio.PorfolioDomain.Core/bin/Debug/netcoreapp3.1/portfolio.IDP.pdb
+E:/Current Projects/portfolio/BackEnd/Portfolio/Portfolio.PorfolioDomain.Core/obj/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.csproj.CopyComplete
+E:/Current Projects/portfolio/BackEnd/Portfolio/Portfolio.PorfolioDomain.Core/obj/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.csproj.AssemblyReference.cache
+/home/apexbugfinder/Documents/codePractice/portfolioBackEnd/portfolio/Portfolio/Portfolio.PorfolioDomain.Core/obj/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.GeneratedMSBuildEditorConfig.editorconfig
+/home/apexbugfinder/portfolio/webapi/portfolio/Portfolio/Portfolio.PorfolioDomain.Core/bin/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.deps.json
+/home/apexbugfinder/portfolio/webapi/portfolio/Portfolio/Portfolio.PorfolioDomain.Core/bin/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.runtimeconfig.json
+/home/apexbugfinder/portfolio/webapi/portfolio/Portfolio/Portfolio.PorfolioDomain.Core/bin/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.runtimeconfig.dev.json
+/home/apexbugfinder/portfolio/webapi/portfolio/Portfolio/Portfolio.PorfolioDomain.Core/bin/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.dll
+/home/apexbugfinder/portfolio/webapi/portfolio/Portfolio/Portfolio.PorfolioDomain.Core/bin/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.pdb
+/home/apexbugfinder/portfolio/webapi/portfolio/Portfolio/Portfolio.PorfolioDomain.Core/obj/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.Properties.Resources.resources
+/home/apexbugfinder/portfolio/webapi/portfolio/Portfolio/Portfolio.PorfolioDomain.Core/obj/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.csproj.GenerateResource.cache
+/home/apexbugfinder/portfolio/webapi/portfolio/Portfolio/Portfolio.PorfolioDomain.Core/obj/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.AssemblyInfoInputs.cache
+/home/apexbugfinder/portfolio/webapi/portfolio/Portfolio/Portfolio.PorfolioDomain.Core/obj/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.AssemblyInfo.cs
+/home/apexbugfinder/portfolio/webapi/portfolio/Portfolio/Portfolio.PorfolioDomain.Core/obj/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.csproj.CoreCompileInputs.cache
+/home/apexbugfinder/portfolio/webapi/portfolio/Portfolio/Portfolio.PorfolioDomain.Core/obj/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.dll
+/home/apexbugfinder/portfolio/webapi/portfolio/Portfolio/Portfolio.PorfolioDomain.Core/obj/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.pdb
+/home/apexbugfinder/portfolio/webapi/portfolio/Portfolio/Portfolio.PorfolioDomain.Core/obj/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.genruntimeconfig.cache
+/home/apexbugfinder/portfolio/webapi/portfolio/Portfolio/Portfolio.PorfolioDomain.Core/obj/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.csproj.AssemblyReference.cache
+/home/apexbugfinder/portfolio/webapi/portfolio/Portfolio/Portfolio.PorfolioDomain.Core/obj/Debug/netcoreapp3.1/Portfolio.PorfolioDomain.Core.GeneratedMSBuildEditorConfig.editorconfig
