@@ -48,12 +48,14 @@ namespace Portfolio.WebApp.Concrete
           {
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
-            con.Open();
-            SqlDataReader reader = cmd.ExecuteReader();
+            await con.OpenAsync();
+            SqlDataReader reader = await cmd.ExecuteReaderAsync();
             SqlReaderProjectCreator sqlReader = new SqlReaderProjectCreator();
             users = await sqlReader.Getdata(reader);
 
           }
+          await con.CloseAsync();
+
           // message = "Project Creators found in the PortfolioDB: ";
           // foreach(var item in users) {
           //     message += message + "\n" + "id:  " +item.SubjectId + "  :   Username: " + item.Username;
@@ -358,14 +360,16 @@ namespace Portfolio.WebApp.Concrete
                         {
                           cmd.CommandType = System.Data.CommandType.StoredProcedure;
                           cmd.Parameters.Add("@pcUname", SqlDbType.NVarChar).Value = keyword;
-                          con.Open();
+                          await con.OpenAsync();
                           SqlDataReader reader = cmd.ExecuteReader();
                           SqlReaderProjectCreator sqlReader = new SqlReaderProjectCreator();
                           results = await sqlReader.Getdata(reader);
 
                         }
-                  }
-            }
+          await con.CloseAsync();
+        }
+        GC.Collect();
+      }
             catch (InvalidCastException ex) {
 
 

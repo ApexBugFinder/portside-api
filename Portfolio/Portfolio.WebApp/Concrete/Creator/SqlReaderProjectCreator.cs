@@ -355,9 +355,11 @@ namespace Portfolio.WebApp.Helpers
         }
 
 
-
+        this.reader.Close();
+        GC.Collect();
         return results;
       }
+
     }
   }
 }

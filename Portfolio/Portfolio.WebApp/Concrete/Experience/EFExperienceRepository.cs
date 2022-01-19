@@ -268,12 +268,14 @@ using (SqlConnection con = new SqlConnection(connString))
             cmd.Parameters.Add("@City", SqlDbType.NVarChar).Value = ItemToUpdate.City;
             cmd.Parameters.Add("@MyState", SqlDbType.NVarChar).Value = ItemToUpdate.State;
 
-            con.Open();
+            await con.OpenAsync();
             SqlDataReader reader = cmd.ExecuteReader();
             SqlReaderExperience sqlReader = new SqlReaderExperience();
             results = await sqlReader.Getdata(reader);
       ItemUpdated = results[0];
           }
+          await con.CloseAsync();
+          GC.Collect();
         }
             }
             else
