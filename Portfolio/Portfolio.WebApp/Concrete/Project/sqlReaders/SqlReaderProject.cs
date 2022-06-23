@@ -30,7 +30,7 @@ namespace Portfolio.WebApp.Helpers {
 
       this.reader = dataReader;
 
- await using (this.reader)
+ using (this.reader)
 {
       if (this.reader.HasRows)
       {
@@ -39,9 +39,6 @@ namespace Portfolio.WebApp.Helpers {
 
 
 
-              Project project = new Project();
-              ProjectRequirement projectRequirement = new ProjectRequirement();
-              ProjectLink projectLink = new ProjectLink();
 
 
 
@@ -51,16 +48,21 @@ namespace Portfolio.WebApp.Helpers {
 
 
 
+                    Project project = new Project();
+                    ProjectRequirement projectRequirement = new ProjectRequirement();
+                    ProjectLink projectLink = new ProjectLink();
 
-                // message = "ProjectID: " + ConvertDBVal.ConvertFromDBVal<string>(reader.GetValue(0));
-                // Notification.PostMessage(message);
+
                 //     // IF I HAVE PROJECT CREATOR CHECK FOR PROJECTS
                 if (!String.IsNullOrEmpty(ConvertDBVal.ConvertFromDBVal<string>(reader.GetValue(0)))
                 || reader.GetValue(0) != System.DBNull.Value)
                 {
+
+                  message = "ProjectID: " + ConvertDBVal.ConvertFromDBVal<string>(reader.GetValue(0));
+                Notification.PostMessage(message);
                   project = new Project()
                   {
-                    ID = ConvertDBVal.ConvertFromDBVal<string>(reader.GetValue(0)),
+                    ID = ConvertDBVal.ConvertFromDBVal<string>(reader.GetValue(0)) ,
                     ProjectName = ConvertDBVal.ConvertFromDBVal<string>(reader.GetValue(reader.GetOrdinal("ProjectName"))),
                     ProjectCreatorID = ConvertDBVal.ConvertFromDBVal<string>(reader.GetValue(reader.GetOrdinal("ProjectCreatorID"))),
                     Description = ConvertDBVal.ConvertFromDBVal<string>(reader.GetValue(reader.GetOrdinal("Description"))),
@@ -157,7 +159,10 @@ namespace Portfolio.WebApp.Helpers {
                   if(!String.IsNullOrEmpty(projectRequirement.ID) || !(project.ProjectRequirements.Contains(projectRequirement)))
                   project.ProjectRequirements.Add(projectRequirement);
 
+                  if(!String.IsNullOrEmpty(project.ID))
                   results.Add(project);
+
+                  GC.Collect();
                   // message = "Count of Users PointB: " + results.Count;
                   // Notification.PostMessage(message);
                 }
@@ -166,6 +171,7 @@ namespace Portfolio.WebApp.Helpers {
 
       } // CLOSE USING
 
+      GC.Collect();
 
 
       return results;

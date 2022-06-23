@@ -92,7 +92,7 @@ namespace Portfolio.WebApp.Helpers {
 
       } // CLOSE USING
 
-
+      GC.Collect();
 
       return results;
     }

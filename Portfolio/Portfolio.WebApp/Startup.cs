@@ -46,13 +46,13 @@ namespace Portfolio.WebApp
 
 services.AddAuthentication()
   .AddIdentityServerAuthentication(options => {
-    options.Authority = "https://identity.portside.sbs";
+    options.Authority = "https://identity.portside.cyou";
     options.RequireHttpsMetadata = false;
     options.ApiName = "portfoliowebapi";
 
     })
   // .AddJwtBearer("Bearer", options => {
-  //   options.Authority="https://identity.portside.sbs";
+  //   options.Authority="https://identity.portside.cyou";
   //   options.RequireHttpsMetadata = false;
   //   options.Audience = "portfoliofront portfoliowebapi";
 
@@ -134,17 +134,17 @@ services.AddAuthentication()
                 "https://198.211.29.93:8085",
                 "http://198.211.29.93:8086",
                 "https://198.211.29.93",
-                "https://webapi.portside.sbs",
-                "http://webapi.portside.sbs",
+                "https://webapi.portside.cyou",
+                "http://webapi.portside.cyou",
 
                         "http://localhost:8000", //IDP
                         "https://198.211.29.93:8000",
-                        "https://identity.portside.sbs",
-                        "http://identity.portside.sbs",
+                        "https://identity.portside.cyou",
+                        "http://identity.portside.cyou",
 
                         "http://localhost:4200",//CLIENT
                         "https://localhost:4200",
-                        "https://portside.sbs",
+                        "https://portside.cyou",
 
                         "http://localhost:3000",
                         "https://198.211.29.93",
@@ -152,7 +152,7 @@ services.AddAuthentication()
 
                         .AllowAnyHeader()
                         .AllowAnyMethod()
-                        // .WithMethods("GET", "PUT", "POST", "DELETE")
+                        .WithMethods("GET", "PUT", "POST", "DELETE")
                         ;
               });
       });
@@ -187,13 +187,13 @@ services.AddAuthentication()
       app.UseRouting();
       app.UseHttpsRedirection();
       app.UseStaticFiles();
-    app.UseCors(MyAllowSpecificOrigins);
+      app.UseCors(MyAllowSpecificOrigins);
       app.UseAuthorization();
      app.UseAuthentication();
 
 
       app.UseEndpoints(endpoints => endpoints.MapControllers()
-		 .RequireCors(MyAllowSpecificOrigins)
+		  .RequireCors(MyAllowSpecificOrigins)
 		     );
     }
   }

@@ -62,12 +62,13 @@ namespace Portfolio.WebApp.Concrete
             param1.DbType = System.Data.DbType.Boolean;
             cmd.Parameters.Add(param1);
 
-            con.Open();
-            SqlDataReader reader = cmd.ExecuteReader();
+            await  con.OpenAsync();
+            SqlDataReader reader = await cmd.ExecuteReaderAsync();
             SqlReaderCertification sqlReader = new SqlReaderCertification();
             results = await sqlReader.Getdata(reader);
             certCreated = results[0];
           }
+          await con.CloseAsync();
         }
       }
       catch (InvalidOperationException ex)
@@ -82,7 +83,7 @@ namespace Portfolio.WebApp.Concrete
         Notification.PostMessage(message);
         throw new Exception(ex.Message);
       }
-
+      GC.Collect();
       return certCreated;
     }
 
@@ -100,7 +101,8 @@ namespace Portfolio.WebApp.Concrete
 
           message = "Certification with ID: " + ItemToDeleteID + " has been DELETED";
           Notification.PostMessage(message);
-
+         
+          GC.Collect();
         }
         catch (Exception ex)
         {
@@ -108,7 +110,7 @@ namespace Portfolio.WebApp.Concrete
           Notification.PostMessage(message);
           throw new Exception(message);
         }
-
+        GC.Collect();
       }
       else
       {
@@ -131,6 +133,7 @@ namespace Portfolio.WebApp.Concrete
         Notification.PostMessage(message);
         throw new Exception(message);
       }
+      GC.Collect();
       return Found;
     }
 
@@ -148,15 +151,15 @@ namespace Portfolio.WebApp.Concrete
           {
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
-            con.Open();
+            await con.OpenAsync();
             SqlDataReader reader = cmd.ExecuteReader();
             SqlReaderCertification sqlReader = new SqlReaderCertification();
             itemsFound = await sqlReader.Getdata(reader);
-
+            await con.CloseAsync();
           }
 
         }
-
+        GC.Collect();
         return itemsFound;
 
       }
@@ -180,15 +183,15 @@ namespace Portfolio.WebApp.Concrete
           {
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
             cmd.Parameters.Add("@pcId", SqlDbType.VarChar).Value = ID;
-            con.Open();
+            await con.OpenAsync();
             SqlDataReader reader = cmd.ExecuteReader();
             SqlReaderCertification sqlReader = new SqlReaderCertification();
             items = await sqlReader.Getdata(reader);
 
           }
-
+          await con.CloseAsync();
         }
-
+        GC.Collect();
         return items;
 
       }
@@ -214,13 +217,13 @@ namespace Portfolio.WebApp.Concrete
           {
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
             cmd.Parameters.Add("@Id", SqlDbType.VarChar).Value = ItemId;
-            con.Open();
+            await con.OpenAsync();
             SqlDataReader reader = cmd.ExecuteReader();
             SqlReaderCertification sqlReader = new SqlReaderCertification();
             items = await sqlReader.Getdata(reader);
 
           }
-
+          await con.CloseAsync();
         }
 
 
@@ -231,6 +234,7 @@ namespace Portfolio.WebApp.Concrete
       {
         message = "Certification not found in the DB: " + ItemId + ".\n" + ex.Message;
         Notification.PostMessage(message);
+        GC.Collect();
         throw new Exception(message);
       }
       catch (Exception ex)
@@ -239,15 +243,17 @@ namespace Portfolio.WebApp.Concrete
         Notification.PostMessage(message);
         throw new Exception(ex.Message);
       }
-
+      GC.Collect();
       if (items.Count > 0)
       {
+
         return items[0];
       }
       else
       {
         message = "Certification not found in the DB: " + ItemId;
         Notification.PostMessage(message);
+        GC.Collect();
         throw new Exception(message);
       }
 
@@ -265,7 +271,7 @@ namespace Portfolio.WebApp.Concrete
         throw new Exception(message);
       }
 
-     
+
         try
         {
           using (SqlConnection con = new SqlConnection(connString))
@@ -288,13 +294,14 @@ namespace Portfolio.WebApp.Concrete
               cmd.Parameters.Add("@IssuingBody_Name", SqlDbType.NVarChar).Value = ItemToUpdate.IssuingBody_Name;
               cmd.Parameters.Add("@IssuingBody_Logo", SqlDbType.NText).Value = ItemToUpdate.IssuingBody_Logo;
 
-              con.Open();
+              await con.OpenAsync();
               SqlDataReader reader = cmd.ExecuteReader();
               SqlReaderCertification sqlReader = new SqlReaderCertification();
               results = await sqlReader.Getdata(reader);
 
             }
-          }
+          await con.CloseAsync();
+        }
         }
         catch (InvalidOperationException ex)
         {
@@ -309,7 +316,7 @@ namespace Portfolio.WebApp.Concrete
           throw new Exception(ex.Message);
         }
 
-
+      GC.Collect();
       return ItemToUpdate;
     }
 

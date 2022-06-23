@@ -109,6 +109,7 @@ namespace Portfolio.WebApp.Helpers
                         if (!String.IsNullOrEmpty(myRole.ID))
                           myExperience.Roles.Add(myRole);
 
+                        
                         results.Add(myExperience);
                       }
 
@@ -148,7 +149,7 @@ namespace Portfolio.WebApp.Helpers
         }
 
 
-
+        GC.Collect();
         return results;
       }
     }

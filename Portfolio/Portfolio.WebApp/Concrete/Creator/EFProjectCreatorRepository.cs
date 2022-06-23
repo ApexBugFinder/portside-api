@@ -62,6 +62,7 @@ namespace Portfolio.WebApp.Concrete
           // }
           // Notification.PostMessage(message);
         }
+        GC.Collect();
       }
       catch (Exception ex)
       {
@@ -96,7 +97,7 @@ namespace Portfolio.WebApp.Concrete
                   cmd.Parameters.Add("@username", SqlDbType.VarChar).Value = ItemToCreate.Username;
                   // SqlParameter newUser = cmd.Parameters.AddWithValue("@id", JsonConvert.SerializeObject(ItemToCreate.SubjectId));
                   // SqlParameter newUserID = cmd.Parameters.AddWithValue("@username", JsonConvert.SerializeObject(ItemToCreate.Username));
-                  con.Open();
+                  await con.OpenAsync();
 
                   SqlDataReader reader = cmd.ExecuteReader();
 
@@ -104,10 +105,14 @@ namespace Portfolio.WebApp.Concrete
                   results = await sqlReader.Getdata(reader);
 
                 }
-                // message = "Project Creator was updated in PortFolio DB to: \n" + "id:   " +  ItemToCreate.SubjectId + "     Username:  " + ItemToCreate.Username;
-                // Notification.PostMessage(message);
-              }
-            }
+          await con.CloseAsync();
+          GC.Collect();
+          // message = "Project Creator was updated in PortFolio DB to: \n" + "id:   " +  ItemToCreate.SubjectId + "     Username:  " + ItemToCreate.Username;
+          // Notification.PostMessage(message);
+        }
+
+        GC.Collect();
+      }
             catch (Exception ex)
             {
               // message = "Reading Database Error:\nMessage:  " + ex.Message;
@@ -126,16 +131,17 @@ namespace Portfolio.WebApp.Concrete
                     Context.Users.Remove(itemToDelete);
                     await Context.SaveChangesAsync();
 
-                    // message = "Project Creator with ID: " + ItemToDeleteID + " has been DELETED";
-                    // Notification.PostMessage(message);
-                }
+          // message = "Project Creator with ID: " + ItemToDeleteID + " has been DELETED";
+          // Notification.PostMessage(message);
+        }
                 catch (Exception ex)
                 {
                     // message = "Deleting Project Creator with ID " + ItemToDeleteID + " from Database has failed.   \nError: Message:  " + ex.Message +"\n";
                     // Notification.PostMessage(message);
                     throw new Exception(ex.Message);
                 }
-            } else
+        GC.Collect();
+      } else
             {
                 // message = "ProjectCreator with ID: " + ItemToDeleteID + " does not Exist, WARNING: cannot DELETE";
                 // Notification.PostMessage(message);
@@ -148,13 +154,15 @@ namespace Portfolio.WebApp.Concrete
             try
             {
                 Found = await Context.Users.AnyAsync(i => i.SubjectId == ItemId);
+
             } catch (Exception ex)
             {
                 // message = "Reading Database Error looking for ProjectCreator ID " + ItemId + "\nMessage:  " + ex.Message;
                 // Notification.PostMessage(message);
                 throw new Exception(ex.Message);
             }
-            return Found;
+      GC.Collect();
+      return Found;
         }
 
         public async Task<ProjectCreator> Read(string ItemId)
@@ -169,15 +177,16 @@ namespace Portfolio.WebApp.Concrete
                 {
                   cmd.CommandType = System.Data.CommandType.StoredProcedure;
                   cmd.Parameters.Add("@pcId", SqlDbType.VarChar).Value = ItemId;
-                  con.Open();
+                  await con.OpenAsync();
                   SqlDataReader reader = cmd.ExecuteReader();
                   SqlReaderProjectCreator sqlReader = new SqlReaderProjectCreator();
                   results = await sqlReader.Getdata(reader);
 
                 }
-
-              }
-            }
+          await con.CloseAsync();
+        }
+        GC.Collect();
+      }
             catch (Exception ex)
             {
               // message = "Reading Database Error:\nMessage:  " + ex.Message;
@@ -227,15 +236,17 @@ namespace Portfolio.WebApp.Concrete
 
 
 
-                con.Open();
+                await con.OpenAsync();
                 SqlDataReader reader = cmd.ExecuteReader();
                 SqlReaderProjectCreator sqlReader = new SqlReaderProjectCreator();
                 results = await sqlReader.Getdata(reader);
 
             }
-                // message = "Project Creator was updated in PortFolio DB to: \n" + ItemToUpdate;
-                // Notification.PostMessage(message);
+            await con.CloseAsync();
+            // message = "Project Creator was updated in PortFolio DB to: \n" + ItemToUpdate;
+            // Notification.PostMessage(message);
           }
+          GC.Collect();
         }
         catch (Exception ex)
         {
@@ -269,16 +280,17 @@ namespace Portfolio.WebApp.Concrete
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
             cmd.Parameters.Add("@pcId", SqlDbType.VarChar).Value = ItemId;
-            con.Open();
+            await con.OpenAsync();
             SqlDataReader reader = cmd.ExecuteReader();
             SqlReaderProjectCreator sqlReader = new SqlReaderProjectCreator();
             results = await sqlReader.Getdata(reader);
 
           }
-
+          await con.CloseAsync();
+          GC.Collect();
         }
         user = results[0];
-
+        GC.Collect();
         return user;
 
       }
@@ -305,14 +317,16 @@ namespace Portfolio.WebApp.Concrete
           {
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
             cmd.Parameters.Add("@pcUname", SqlDbType.VarChar).Value = userName;
-            con.Open();
+            await con.OpenAsync();
             SqlDataReader reader = cmd.ExecuteReader();
             SqlReaderProjectCreator sqlReader = new SqlReaderProjectCreator();
             results = await sqlReader.Getdata(reader);
 
           }
+          await con.CloseAsync();
 
-      }
+        }
+        GC.Collect();
     }
             catch (InvalidOperationException ex)
             {
@@ -341,7 +355,7 @@ namespace Portfolio.WebApp.Concrete
         if (user == null)
         throw new NullReferenceException("Did not return any ProjectCreators");
 
-
+        GC.Collect();
         return user;
     }
 
@@ -392,7 +406,7 @@ namespace Portfolio.WebApp.Concrete
                 // Notification.PostMessage(message);
                 throw new Exception(ex.Message);
             }
-
+      GC.Collect();
       return results.ToList();
         }
     public Task<List<ProjectCreator>> GetItemsByPC(string ItemId) => throw new NotImplementedException();

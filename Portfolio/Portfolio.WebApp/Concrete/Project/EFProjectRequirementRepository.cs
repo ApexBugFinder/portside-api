@@ -37,13 +37,13 @@ namespace Portfolio.WebApp.Concrete
           {
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
             cmd.Parameters.Add("@pId", SqlDbType.VarChar).Value = ProjectID;
-            con.Open();
+            await con.OpenAsync();
             SqlDataReader reader = cmd.ExecuteReader();
             SqlReaderProjectRequirement sqlReader = new SqlReaderProjectRequirement();
             projectRequirements = await sqlReader.Getdata(reader);
 
           }
-
+            await con.CloseAsync();
         }
                 message = "Projects in DB: \n" + projectRequirements.ToList();
 
@@ -58,8 +58,10 @@ namespace Portfolio.WebApp.Concrete
             {
                 message = "Reading Database Error:\nMessage:  " + ex.Message;
                 Notification.PostMessage(message);
+                GC.Collect();
                 throw new Exception(ex.Message);
             }
+            GC.Collect();
             return projectRequirements;
         }
 
@@ -91,12 +93,13 @@ namespace Portfolio.WebApp.Concrete
 
 
 
-                        con.Open();
+                        await con.OpenAsync();
                         SqlDataReader reader = cmd.ExecuteReader();
                         SqlReaderProjectRequirement sqlReader = new SqlReaderProjectRequirement();
                         results = await sqlReader.Getdata(reader);
 
                     }
+                        await con.CloseAsync();
                     }
                     if (results== null || results.Count == 0 ) {
                         message = "There was an error, the Project Requirement: " + ItemToCreate.ID + " was not returned from the Database";
@@ -114,6 +117,7 @@ namespace Portfolio.WebApp.Concrete
 
                 message = "Error writing ProjectRequirements to PortfolioDB: \n" + ItemToCreate + "\n" + "Error Message: " + ex.Message;
                 Notification.PostMessage(message);
+                GC.Collect();
                 throw new Exception(message);
             }
             return ItemCreated;
@@ -134,8 +138,10 @@ namespace Portfolio.WebApp.Concrete
 
                 message = "Error writing ProjectRequirements to PortfolioDB: \n" + ItemsToCreate + "\n" + "Error Message: " + ex.Message;
                 Notification.PostMessage(message);
+                GC.Collect();
                 throw new Exception(message);
             }
+            GC.Collect();
             return ItemsToCreate;
         }
 
@@ -153,12 +159,13 @@ namespace Portfolio.WebApp.Concrete
                             cmd.CommandType = System.Data.CommandType.StoredProcedure;
                             cmd.Parameters.Add("@ID", SqlDbType.VarChar).Value = ItemToDelete.ID;
                             cmd.Parameters.Add("@ProjectID", SqlDbType.VarChar).Value = ItemToDelete.ProjectID;
-                            con.Open();
+                            await con.OpenAsync();
                             SqlDataReader reader = cmd.ExecuteReader();
                             SqlReaderProjectRequirement sqlReader = new SqlReaderProjectRequirement();
                             results = await sqlReader.Getdata(reader);
 
                         }
+                        await con.CloseAsync();
                     }
 
 
@@ -167,10 +174,11 @@ namespace Portfolio.WebApp.Concrete
                 {
                     message = "Deleting ProjectRequirements with ID " + ItemToDelete.ID + " from Database has failed.   \nError: Message:  " + ex.Message + "\n";
                     Notification.PostMessage(message);
+                    GC.Collect();
                     throw new Exception(message);
                 }
 
-
+            GC.Collect();
             return results;
         }
 
@@ -192,6 +200,7 @@ namespace Portfolio.WebApp.Concrete
                 {
                     message = "Deleting ProjectRequirements with ID " + ItemToDelete.ToString() + " from Database has failed.   \nError: Message:  " + ex.Message + "\n";
                     Notification.PostMessage(message);
+                    GC.Collect();
                     throw new Exception(message);
                 }
 
@@ -209,8 +218,10 @@ namespace Portfolio.WebApp.Concrete
             {
                 message = "Reading Database Error looking for ProjectRequirements ID " + ItemId + "\nMessage:  " + ex.Message;
                 Notification.PostMessage(message);
+                GC.Collect();
                 throw new Exception(message);
             }
+            GC.Collect();
             return Found;
         }
 
@@ -226,12 +237,13 @@ namespace Portfolio.WebApp.Concrete
           {
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
             cmd.Parameters.Add("@ID", SqlDbType.VarChar).Value = ItemId;
-            con.Open();
+            await con.OpenAsync();
             SqlDataReader reader = cmd.ExecuteReader();
             SqlReaderProjectRequirement sqlReader = new SqlReaderProjectRequirement();
             results = await sqlReader.Getdata(reader);
 
           }
+          await con.CloseAsync();
 
         }
         if (results.Count == 0 || results == null)
@@ -245,8 +257,10 @@ namespace Portfolio.WebApp.Concrete
             {
                 message = "Read Database Error while looking for ProjectRequirements with ID: " + ItemId + "\n" + ex.Message;
                 Notification.PostMessage(message);
+                GC.Collect();
                 throw new Exception(message);
             }
+            GC.Collect();
             return Found;
         }
 
@@ -278,17 +292,19 @@ namespace Portfolio.WebApp.Concrete
 
 
 
-                    con.Open();
+                    await con.OpenAsync();
                     SqlDataReader reader = cmd.ExecuteReader();
                     SqlReaderProjectRequirement sqlReader = new SqlReaderProjectRequirement();
                     results = await sqlReader.Getdata(reader);
 
                 }
+                await con.CloseAsync();
                 }
                 if (results.Count == 0 || results == null)
                 {
                 message = "Updated Project Requirement " + ItemToUpdate.ID + " was not returned from database";
                 Notification.PostMessage(message);
+                GC.Collect();
                     throw new NullReferenceException(message);
                 } else {
                     UpdatedItem = results[0];
@@ -304,8 +320,10 @@ namespace Portfolio.WebApp.Concrete
             {
                 message = "Update Database Error while updating ProjectRequirements with ID: " + ItemToUpdate.ID + "\n";
                 Notification.PostMessage(message);
+                GC.Collect();
                 throw new Exception(message);
             }
+            GC.Collect();
             return UpdatedItem;
         }
 
@@ -322,20 +340,24 @@ namespace Portfolio.WebApp.Concrete
                         {
                             cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
-                            con.Open();
+                            await con.OpenAsync();
                             SqlDataReader reader = cmd.ExecuteReader();
                             SqlReaderProjectRequirement sqlReader = new SqlReaderProjectRequirement();
                             itemsFound = await sqlReader.Getdata(reader);
 
                         }
+                        await con.CloseAsync();
 
                     }
                 message = "ProjectRequirements in DB: \n" + itemsFound.ToList();
 
 
 
-                if (itemsFound == null)
+                if (itemsFound == null) {
+                    GC.Collect();
                     throw new NullReferenceException("Did not return any Project Links");
+                }
+
 
                 Notification.PostMessage(message);
             }
@@ -343,8 +365,10 @@ namespace Portfolio.WebApp.Concrete
             {
                 message = "Reading Database Error:\nMessage:  " + ex.Message;
                 Notification.PostMessage(message);
+                GC.Collect();
                 throw new Exception(ex.Message);
             }
+            GC.Collect();
             return itemsFound;
         }
 

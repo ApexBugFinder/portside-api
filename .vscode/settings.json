@@ -1,0 +1,49 @@
+{
+  "sqltools.connections": [
+    {
+      "mssqlOptions": {
+        "appName": "SQLTools",
+        "useUTC": true,
+        "encrypt": true
+      },
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 1433,
+      "driver": "MSSQL",
+      "name": "portfolio-dev",
+      "database": "PortfolioDB",
+      "password": "Yukon900",
+      "username": "sa"
+    },
+    {
+      "mssqlOptions": {
+        "appName": "SQLTools",
+        "useUTC": true,
+        "encrypt": true
+      },
+      "previewLimit": 50,
+      "server": "198.211.29.93",
+      "port": 1433,
+      "driver": "MSSQL",
+      "name": "portfolio",
+      "database": "PortfolioDB",
+      "username": "SA",
+      "password": "Apple&Pie79"
+    },
+    {
+      "mssqlOptions": {
+        "appName": "SQLTools",
+        "useUTC": true,
+        "encrypt": true
+      },
+      "previewLimit": 50,
+      "server": "198.211.29.93",
+      "port": 1433,
+      "driver": "MSSQL",
+      "name": "port",
+      "database": "PortfolioDB",
+      "username": "sa",
+      "password": "Apple&Pie79"
+    }
+  ]
+}

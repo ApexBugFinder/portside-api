@@ -16,12 +16,14 @@ using Microsoft.AspNetCore.Cors;
 
 namespace Portfolio.WebApp.Controllers
 {
-  // [EnableCors("MyAllowSpecificOrigins")]
+
   [Route("api/[controller]")]
+
   [ApiController]
   // [ControllerName("pc")]
   //[ValidateAntiForgeryToken]
 //   [Authorize]
+ [EnableCors("MyAllowSpecificOrigins")]
   public class ProjectCreatorController : ControllerBase
   {
     private readonly IProjectCreatorRepository repository;
@@ -47,7 +49,7 @@ namespace Portfolio.WebApp.Controllers
       {
         List<ProjectCreator> projectCreators = await repository.GetItems();
         projectCreators.ForEach(creator => creatorsDtosFound.Add(entityConverter.ConvertToDto(creator)));
-
+        GC.Collect();
         return creatorsDtosFound;
       }
       catch (Exception ex)
@@ -57,6 +59,7 @@ namespace Portfolio.WebApp.Controllers
             "\nWITH METHOD: GetProjectCreators" +
             "\nERROR MESSAGE: " + ex.Message;
         Notification.PostMessage(message);
+        GC.Collect();
         return BadRequest(message);
       }
     }
@@ -76,11 +79,12 @@ namespace Portfolio.WebApp.Controllers
           if (projectCreatorFound != null)
           {
             projectCreatorFoundDto = entityConverter.ConvertToDto(projectCreatorFound);
-
+            GC.Collect();
             return Ok(projectCreatorFoundDto);
           }
           else
           {
+            GC.Collect();
             return NotFound("No ProjectCreators found");
           }
         }
@@ -91,9 +95,11 @@ namespace Portfolio.WebApp.Controllers
           "\nWITH METHOD: GetProjectCreator" +
           "\nERROR MESSAGE: " + ex.Message;
           Notification.PostMessage(message);
+          GC.Collect();
           return BadRequest(message);
         }
       }
+      GC.Collect();
       return NotFound("ProjectCreator Does Not Exist");
     }
 
@@ -102,6 +108,7 @@ namespace Portfolio.WebApp.Controllers
       var result = await GetProjectCreatorInfo(id);
       DataConverter<ProjectCreatorDto> d = new DataConverter<ProjectCreatorDto>();
       ProjectCreatorDto returnResult = d.GetOkObjectResult(result);
+      GC.Collect();
       return returnResult;
     }
     // GET: api/ProjectCreator/5
@@ -121,10 +128,10 @@ namespace Portfolio.WebApp.Controllers
           if (projectCreatorFound != null)
           {
             projectCreatorFoundDto = entityConverter.ConvertToDto(projectCreatorFound);
-
+            GC.Collect();
             return Ok(projectCreatorFoundDto);
           }
-
+          GC.Collect();
         }
         catch (Exception ex)
         {
@@ -133,6 +140,7 @@ namespace Portfolio.WebApp.Controllers
        "\nWITH METHOD: GetProjectCreatorInfo" +
        "\nERROR MESSAGE: " + ex.Message;
           Notification.PostMessage(message);
+          GC.Collect();
           return BadRequest(message);
         }
       }
@@ -142,6 +150,7 @@ namespace Portfolio.WebApp.Controllers
 
         newUser.ID = id;
         newUser.Username = "portfolioUser_" + id;
+        GC.Collect();
         return Ok(await PostProjectCreator(newUser));
         //
       }
@@ -155,6 +164,7 @@ namespace Portfolio.WebApp.Controllers
       var result = await GetProjectCreatorInfoByUsername(id);
       DataConverter<ProjectCreatorDto> d = new DataConverter<ProjectCreatorDto>();
       ProjectCreatorDto returnResult = d.GetOkObjectResult(result);
+      GC.Collect();
       return returnResult;
     }
     // GET: api/ProjectCreator/5
@@ -172,7 +182,7 @@ namespace Portfolio.WebApp.Controllers
         if (projectCreatorFound != null)
         {
           projectCreatorFoundDto = entityConverter.ConvertToDto(projectCreatorFound);
-
+          GC.Collect();
           return Ok(projectCreatorFoundDto);
         }
         else
@@ -187,6 +197,7 @@ namespace Portfolio.WebApp.Controllers
            "\nWITH METHOD: GetProjectCreator" +
            "\nERROR MESSAGE: " + ex.Message;
         Notification.PostMessage(message);
+        GC.Collect();
         return BadRequest(message);
       }
 
@@ -203,7 +214,7 @@ namespace Portfolio.WebApp.Controllers
     //    return returnResult;
     //}
     // GET: api/ProjectCreator/5
-    // [DisableCors()]
+    [DisableCors()]
     [AllowAnonymous]
     [HttpPut("search/")]
 
@@ -223,11 +234,13 @@ namespace Portfolio.WebApp.Controllers
         if (projectCreatorsFound != null && projectCreatorsFound.Count > 0)
         {
           projectCreatorsFound.ForEach(i => projectCreatorFoundDto.Add(entityConverter.ConvertToDto(i)));
+          GC.Collect();
 
           return Ok(projectCreatorFoundDto);
         }
         else
         {
+          GC.Collect();
           return NotFound("No ProjectCreators found");
         }
       }
@@ -238,6 +251,7 @@ namespace Portfolio.WebApp.Controllers
            "\nWITH METHOD: SEARCH FOR ProjectCreators By Keyword" +
            "\nERROR MESSAGE: " + ex.Message;
         Notification.PostMessage(message);
+        GC.Collect();
         return BadRequest(message);
       }
 
@@ -266,7 +280,7 @@ namespace Portfolio.WebApp.Controllers
           ProjectCreator projectCreatorToUpdate = entityConverter.ConvertToCoreEntity(projectCreatorDto);
           projectCreatorUpdated = await repository.Update(projectCreatorToUpdate);
           updatedProjectCreatorDto = entityConverter.ConvertToDto(projectCreatorUpdated);
-
+          GC.Collect();
           return Ok(updatedProjectCreatorDto);
         }
 
@@ -293,7 +307,7 @@ namespace Portfolio.WebApp.Controllers
 
       ProjectCreatorDto returnResult = dataConverter.GetOkObjectResult(result);
 
-
+      GC.Collect();
       return returnResult;
     }
     // POST: api/Allergies
@@ -314,7 +328,7 @@ namespace Portfolio.WebApp.Controllers
       {
         ProjectCreator projectCreatorCreated = await repository.Create(projectCreatorToCreate);
         ProjectCreatorDto projectCreatorCreatedDto = entityConverter.ConvertToDto(projectCreatorCreated);
-
+        GC.Collect();
         return Ok(projectCreatorCreatedDto);
       }
 
@@ -325,6 +339,7 @@ namespace Portfolio.WebApp.Controllers
                "\nWITH METHOD: PostProjectCreator" +
            "\nERROR MESSAGE: " + ex.Message;
         Notification.PostMessage(message);
+        GC.Collect();
         return BadRequest(message);
       }
 
@@ -339,7 +354,7 @@ namespace Portfolio.WebApp.Controllers
       DataConverter<ProjectCreatorDto> d = new DataConverter<ProjectCreatorDto>();
       ProjectCreatorDto returnResult = d.GetOkObjectResult(result);
 
-
+GC.Collect();
       return returnResult; ;
     }
     // DELETE: api/Allergies/5
@@ -366,9 +381,11 @@ namespace Portfolio.WebApp.Controllers
              "\nWITH METHOD: DeleteProjectCreator" +
              "\nERROR MESSAGE: " + ex.Message;
           Notification.PostMessage(message);
+          GC.Collect();
           return BadRequest(message);
         }
       }
+      GC.Collect();
       return NotFound("Cannot find ProjectCreator to delete");
     }
 

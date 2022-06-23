@@ -58,12 +58,13 @@ namespace Portfolio.WebApp.Concrete
                     cmd.Parameters.Add("@City", SqlDbType.NVarChar).Value = ItemToCreate.City;
                     cmd.Parameters.Add("@MyState", SqlDbType.NVarChar).Value = ItemToCreate.State;
 
-                    con.Open();
+                    await con.OpenAsync();
                     SqlDataReader reader = cmd.ExecuteReader();
                     SqlReaderExperience sqlReader = new SqlReaderExperience();
                     results = await sqlReader.Getdata(reader);
 
                 }
+          await con.CloseAsync();
                 }
             }
             catch (Exception ex)
@@ -73,7 +74,8 @@ namespace Portfolio.WebApp.Concrete
                 Notification.PostMessage(message);
                 throw new Exception(message);
             }
-            return ItemToCreate;
+      GC.Collect();
+      return ItemToCreate;
         }
 
 
@@ -125,12 +127,13 @@ namespace Portfolio.WebApp.Concrete
                     {
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
-                        con.Open();
+                        await con.OpenAsync();
                         SqlDataReader reader = cmd.ExecuteReader();
                         SqlReaderExperience sqlReader = new SqlReaderExperience();
                         itemsFound = await sqlReader.Getdata(reader);
 
                     }
+          await con.CloseAsync();
 
                     }
 
@@ -153,7 +156,8 @@ namespace Portfolio.WebApp.Concrete
                 Notification.PostMessage(message);
                 throw new Exception(ex.Message);
             }
-            return itemsFound;
+      GC.Collect();
+      return itemsFound;
         }
         public async Task<List<Experience>> GetItemsByPC(string ID)
         {
@@ -166,30 +170,33 @@ using (SqlConnection con = new SqlConnection(connString))
           {
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
             cmd.Parameters.Add("@pcId", SqlDbType.VarChar).Value = ID;
-            con.Open();
+            await con.OpenAsync();
             SqlDataReader reader = cmd.ExecuteReader();
             SqlReaderExperience sqlReader = new SqlReaderExperience();
             items = await sqlReader.Getdata(reader);
 
           }
+          await con.CloseAsync();
 
         }
 
 
-            message = "Experiences returned from DB: \n" ;
-            foreach(var item in items) {
-                message += "\nID:  " + item.ID + "  Company: " + item.Company;
+            // message = "Experiences returned from DB: \n" ;
+            // foreach(var item in items) {
+            //     message += "\nID:  " + item.ID + "  Company: " + item.Company;
 
-            }
+            // }
 
-            Notification.PostMessage(message);
+            // Notification.PostMessage(message);
         if (items.Count == 0) {
             message = "Did not return any Experiences";
             Notification.PostMessage(message);
+          GC.Collect();
           throw new NullReferenceException(message);
         }
         else {
-                return items;
+          GC.Collect();
+          return items;
         }
 
 
@@ -215,13 +222,13 @@ using (SqlConnection con = new SqlConnection(connString))
                     {
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;
                         cmd.Parameters.Add("@Id", SqlDbType.VarChar).Value = ItemId;
-                        con.Open();
+                        await con.OpenAsync();
                         SqlDataReader reader = cmd.ExecuteReader();
                         SqlReaderExperience sqlReader = new SqlReaderExperience();
                         results = await sqlReader.Getdata(reader);
                         Found = results[0];
                     }
-
+                    await con.CloseAsync();
                     }
                 message = "Found Experience: " + ItemId + " in the Portfolio DB";
                 Notification.PostMessage(message);
@@ -230,9 +237,11 @@ using (SqlConnection con = new SqlConnection(connString))
             {
                 message = "Read Database Error while looking for Experience Creator with ID: " + ItemId + "\n" + ex.Message;
                 Notification.PostMessage(message);
-                throw new Exception(message);
+        GC.Collect();
+        throw new Exception(message);
             }
-            return Found;
+      GC.Collect();
+      return Found;
         }
 
         public async Task<Experience> Update(Experience ItemToUpdate)

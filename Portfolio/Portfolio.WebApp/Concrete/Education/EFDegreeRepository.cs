@@ -78,12 +78,13 @@ namespace Portfolio.WebApp.Concrete
 
 
 
-            con.Open();
+            await con.OpenAsync();
             SqlDataReader reader = cmd.ExecuteReader();
             SqlReaderDegree sqlReader = new SqlReaderDegree();
             results = await sqlReader.Getdata(reader);
 
           }
+          await con.CloseAsync();
         }
       }
       catch (InvalidOperationException ex)
@@ -98,6 +99,7 @@ namespace Portfolio.WebApp.Concrete
         Notification.PostMessage(message);
         throw new Exception(ex.Message);
       }
+      GC.Collect();
       if (results.Count > 0)
       {
         return results[0];
@@ -122,15 +124,16 @@ namespace Portfolio.WebApp.Concrete
           Degree itemToDelete = await Read(ItemToDeleteID);
           Context.Degrees.Remove(itemToDelete);
           await Context.SaveChangesAsync();
-
+          
           message = "Degree with ID: " + ItemToDeleteID + " has been DELETED";
           Notification.PostMessage(message);
-
+          GC.Collect();
         }
         catch (Exception ex)
         {
           message = "Deleting Degree with ID " + ItemToDeleteID + " from Database has failed.   \nError: Message:  " + ex.Message + "\n";
           Notification.PostMessage(message);
+          GC.Collect();
           throw new Exception(message);
         }
 
@@ -154,8 +157,10 @@ namespace Portfolio.WebApp.Concrete
       {
         message = "Reading Database Error looking for Degree ID " + ItemId + "\nMessage:  " + ex.Message;
         Notification.PostMessage(message);
+        GC.Collect();
         throw new Exception(message);
       }
+      GC.Collect();
       return Found;
     }
 
@@ -171,15 +176,16 @@ namespace Portfolio.WebApp.Concrete
           {
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
-            con.Open();
+            await con.OpenAsync();
             SqlDataReader reader = cmd.ExecuteReader();
             SqlReaderDegree sqlReader = new SqlReaderDegree();
             itemsFound = await sqlReader.Getdata(reader);
 
           }
+          await con.CloseAsync();
 
         }
-
+        GC.Collect();
         return itemsFound;
 
       }
@@ -187,6 +193,7 @@ namespace Portfolio.WebApp.Concrete
       {
         message = "Reading Database Error:\nMessage:  " + ex.Message;
         Notification.PostMessage(message);
+        GC.Collect();
         throw new Exception(ex.Message);
       }
 
@@ -203,15 +210,15 @@ namespace Portfolio.WebApp.Concrete
           {
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
             cmd.Parameters.Add("@pcId", SqlDbType.VarChar).Value = ID;
-            con.Open();
+            await con.OpenAsync();
             SqlDataReader reader = cmd.ExecuteReader();
             SqlReaderDegree sqlReader = new SqlReaderDegree();
             items = await sqlReader.Getdata(reader);
 
           }
-
+          await con.CloseAsync();
         }
-
+        GC.Collect();
         return items;
 
       }
@@ -237,13 +244,13 @@ namespace Portfolio.WebApp.Concrete
           {
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
             cmd.Parameters.Add("@Id", SqlDbType.VarChar).Value = ItemId;
-            con.Open();
+            await con.OpenAsync();
             SqlDataReader reader = cmd.ExecuteReader();
             SqlReaderDegree sqlReader = new SqlReaderDegree();
             items = await sqlReader.Getdata(reader);
 
           }
-
+          await con.CloseAsync();
         }
 
 
@@ -254,15 +261,17 @@ namespace Portfolio.WebApp.Concrete
       {
         message = "Certification not found in the DB: " + ItemId + ".\n" + ex.Message;
         Notification.PostMessage(message);
+        GC.Collect();
         throw new Exception(message);
       }
       catch (Exception ex)
       {
         message = "Reading Database Error:\nMessage:  " + ex.Message;
         Notification.PostMessage(message);
+        GC.Collect();
         throw new Exception(ex.Message);
       }
-
+      GC.Collect();
       if (items.Count > 0)
       {
 
@@ -272,6 +281,7 @@ namespace Portfolio.WebApp.Concrete
       {
         message = "Certification not found in the DB: " + ItemId;
         Notification.PostMessage(message);
+        GC.Collect();
         throw new Exception(message);
       }
 
@@ -279,7 +289,7 @@ namespace Portfolio.WebApp.Concrete
 
     public async Task<Degree> Update(Degree ItemToUpdate)
     {
-  
+
       List<Degree> results = new List<Degree>();
       if (string.IsNullOrEmpty(ItemToUpdate.ID))
       {
@@ -316,24 +326,27 @@ namespace Portfolio.WebApp.Concrete
               cmd.Parameters.Add("@GraduationYear", SqlDbType.DateTime2).Value = ItemToUpdate.GraduationYear;
 
 
-              con.Open();
+              await con.OpenAsync();
               SqlDataReader reader = cmd.ExecuteReader();
               SqlReaderDegree sqlReader = new SqlReaderDegree();
               results = await sqlReader.Getdata(reader);
 
             }
+            await con.CloseAsync();
           }
         }
         catch (InvalidOperationException ex)
         {
           message = "Error Getting User from DB using Username: " + ex.Message;
           Notification.PostMessage(message);
+          GC.Collect();
           throw new Exception(ex.Message);
         }
         catch (Exception ex)
         {
           message = "Reading Database Error:\nMessage:  " + ex.Message;
           Notification.PostMessage(message);
+          GC.Collect();
           throw new Exception(ex.Message);
         }
 
@@ -342,8 +355,10 @@ namespace Portfolio.WebApp.Concrete
       {
         message = "Update Database Error while updating Degree with ID: " + ItemToUpdate.ID + "\n";
         Notification.PostMessage(message);
+        GC.Collect();
         throw new Exception(message);
       }
+      GC.Collect();
       return ItemToUpdate;
     }
 

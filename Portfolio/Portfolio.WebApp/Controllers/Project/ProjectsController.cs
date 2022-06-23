@@ -53,13 +53,15 @@ namespace Portfolio.WebApp.Controllers
       List<ProjectDto> projectsDtosFound = new List<ProjectDto>();
       try
       {
-        List<Project> projects = await repository.GetItems();
+        List<Project> projects = new List<Project>();
+        projects =  await repository.GetItems();
         projects.ForEach(creator =>
         {
 
           projectsDtosFound.Add(entityConverter.ConvertToDto(creator));
 
         });
+        GC.Collect();
         return projectsDtosFound;
       }
 
@@ -70,6 +72,7 @@ namespace Portfolio.WebApp.Controllers
                "\nWITH METHOD: GetProjects" +
            "\nERROR MESSAGE: " + ex.Message;
         Notification.PostMessage(message);
+        GC.Collect();
         return BadRequest(message);
       }
 
@@ -82,11 +85,13 @@ namespace Portfolio.WebApp.Controllers
       List<ProjectDto> projectsDtosFound = new List<ProjectDto>();
       try
       {
-        List<Project> projects = await repository.GetItemsByPCAsync(projectCreatorID).ConfigureAwait(false);
+        List<Project> projects = new List<Project>();
+        projects = await repository.GetItemsByPCAsync(projectCreatorID).ConfigureAwait(false);
 
         foreach(var item in projects) {
           projectsDtosFound.Add(entityConverter.ConvertToDto(item));
         }
+        GC.Collect();
         return projectsDtosFound.ToList();
       }
       catch (Exception ex)
@@ -95,7 +100,9 @@ namespace Portfolio.WebApp.Controllers
           "\nIN CLASS: Project" +
                "\nWITH METHOD: GetProjects" +
            "\nERROR MESSAGE: " + ex.Message;
+
         Notification.PostMessage(message);
+        GC.Collect();
         return BadRequest(message);
       }
 
@@ -128,6 +135,7 @@ namespace Portfolio.WebApp.Controllers
           {
             projectFoundDto = entityConverter.ConvertToDto(projectFound);
 
+            GC.Collect();
             return Ok(projectFoundDto);
           }
           else
@@ -144,6 +152,7 @@ namespace Portfolio.WebApp.Controllers
              "\nWITH METHOD: GetProject" +
              "\nERROR MESSAGE: " + ex.Message;
           Notification.PostMessage(message);
+          GC.Collect();
           return BadRequest(message);
         }
 
@@ -211,6 +220,7 @@ namespace Portfolio.WebApp.Controllers
                     // updatedProjectDto = entityConverter.ConvertToDto(projectUpdated);
                     // //updatedProjectDto.ProjectRequirements = reqsUpdated;
           // updatedProjectDto.ProjectRequirements.AddRange(reqsUpdated);
+          GC.Collect();
           return Ok(updatedProjectDto);
         }
 
@@ -221,6 +231,7 @@ namespace Portfolio.WebApp.Controllers
              "\nWITH METHOD: PutProject()" +
              "\nERROR MESSAGE: " + ex.Message;
           Notification.PostMessage(message);
+          GC.Collect();
           return BadRequest(message);
         }
 
@@ -270,6 +281,7 @@ namespace Portfolio.WebApp.Controllers
         ProjectDto projectCreatedDto = entityConverter.ConvertToDto(projectCreated);
         this.message = "\nProject POSTED:" + JsonConvert.SerializeObject(projectCreatedDto.ToString());
         Notification.PostMessage(this.message);
+        GC.Collect();
         return Ok(projectCreatedDto);
       }
 
@@ -280,6 +292,7 @@ namespace Portfolio.WebApp.Controllers
                "\nWITH METHOD: PostProject" +
            "\nERROR MESSAGE: " + ex.Message;
         Notification.PostMessage(message);
+        GC.Collect();
         return BadRequest(message);
       }
 
@@ -310,6 +323,7 @@ namespace Portfolio.WebApp.Controllers
           Project project = await repository.Read(id);
 
           await repository.Delete(id);
+          GC.Collect();
           return Ok(entityConverter.ConvertToDto(project));
 
 
@@ -322,6 +336,7 @@ namespace Portfolio.WebApp.Controllers
              "\nWITH METHOD: DeleteProject" +
              "\nERROR MESSAGE: " + ex.Message;
           Notification.PostMessage(message);
+          GC.Collect();
           return BadRequest(message);
         }
       }
