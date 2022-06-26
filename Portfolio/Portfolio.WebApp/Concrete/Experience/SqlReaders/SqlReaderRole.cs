@@ -56,7 +56,7 @@ namespace Portfolio.WebApp.Helpers
 
                 message = "RoleID: " + ConvertDBVal.ConvertFromDBVal<string>(reader.GetValue(0));
                 Notification.PostMessage(message);
-                
+
                 if (!String.IsNullOrEmpty(ConvertDBVal.ConvertFromDBVal<string>(reader.GetValue(0)))
                 || reader.GetValue(0) != System.DBNull.Value)
                 {
@@ -121,7 +121,7 @@ namespace Portfolio.WebApp.Helpers
         }
 
 
-
+        GC.Collect();
         return results;
       }
     }

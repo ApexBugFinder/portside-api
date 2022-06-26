@@ -31,12 +31,14 @@ namespace Portfolio.WebApp.Concrete
             {
                 message = "Error Project link must have a service type when posting Project Link: " + ItemToCreate;
                 Notification.PostMessage(message);
+                GC.Collect();
                 throw new Exception(message);
             }
             if (string.IsNullOrEmpty(ItemToCreate.ProjectID))
             {
                 message = "Error when Posting to Project Link to PortfolioDB.  Project link must have a Project ID: " + ItemToCreate;
                 Notification.PostMessage(message);
+                GC.Collect();
                 throw new Exception(message);
             }
             if (await Exists(ItemToCreate.ID))
@@ -62,12 +64,13 @@ namespace Portfolio.WebApp.Concrete
                         cmd.Parameters.Add("@Description", SqlDbType.NVarChar).Value = ItemToCreate.Description;
 
 
-                        con.Open();
+                        await con.OpenAsync();
                         SqlDataReader reader = cmd.ExecuteReader();
                         SqlReaderProjectLink sqlReader = new SqlReaderProjectLink();
                         results = await sqlReader.Getdata(reader);
 
                     }
+                    await con.CloseAsync();
                     }
 
                 message = "Added Project Link to PortfolioDB: \n" + ItemToCreate + "\n";
@@ -78,8 +81,10 @@ namespace Portfolio.WebApp.Concrete
 
                 message = "Error writing Link to PortfolioDB: \n" + ItemToCreate + "\n" + "Error Message: " + ex.Message;
                 Notification.PostMessage(message);
+                GC.Collect();
                 throw new Exception(message);
             }
+            GC.Collect();
             return results;
         }
         public async Task<List<ProjectLink>> CreateRange(List<ProjectLink> ItemsToCreate)
@@ -99,8 +104,10 @@ namespace Portfolio.WebApp.Concrete
 
                 message = "Error writing ProjectLinks to PortfolioDB: \n" + ItemsToCreate + "\n" + "Error Message: " + ex.Message;
                 Notification.PostMessage(message);
+                GC.Collect();
                 throw new Exception(message);
             }
+            GC.Collect();
             return ItemsToCreate;
         }
 
@@ -121,8 +128,10 @@ namespace Portfolio.WebApp.Concrete
 
                 message = "Error writing ProjectLinks to PortfolioDB: \n" + ItemsToCreate + "\n" + "Error Message: " + ex.Message;
                 Notification.PostMessage(message);
+                GC.Collect();
                 throw new Exception(message);
             }
+            GC.Collect();
             return ItemsToCreate;
         }
         public async Task<List<ProjectLink>> DeleteItem(ProjectLink ItemToDelete)
@@ -138,12 +147,13 @@ namespace Portfolio.WebApp.Concrete
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;
                         cmd.Parameters.Add("@ID", SqlDbType.VarChar).Value = ItemToDelete.ID;
                         cmd.Parameters.Add("@ProjectID", SqlDbType.VarChar).Value = ItemToDelete.ProjectID;
-                        con.Open();
+                        await con.OpenAsync();
                         SqlDataReader reader = cmd.ExecuteReader();
                         SqlReaderProjectLink sqlReader = new SqlReaderProjectLink();
                         results = await sqlReader.Getdata(reader);
 
                         }
+                        await con.CloseAsync();
                     }
                     message = "ProjectLink with ID: " + ItemToDelete.ID + " has been DELETED";
                     Notification.PostMessage(message);
@@ -153,8 +163,10 @@ namespace Portfolio.WebApp.Concrete
                 {
                     message = "Deleting ProjectLink with ID " + ItemToDelete.ID + " from Database has failed.   \nError: Message:  " + ex.Message + "\n";
                     Notification.PostMessage(message);
+                    GC.Collect();
                     throw new Exception(message);
                 }
+                GC.Collect();
             return results;
 
         }
@@ -171,6 +183,7 @@ namespace Portfolio.WebApp.Concrete
             {
                 message = "Reading Database Error looking for ProjectLink ID " + ItemId + "\nMessage:  " + ex.Message;
                 Notification.PostMessage(message);
+                GC.Collect();
                 throw new Exception(message);
             }
             return Found;
@@ -189,13 +202,13 @@ namespace Portfolio.WebApp.Concrete
           {
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
             cmd.Parameters.Add("@pId", SqlDbType.VarChar).Value = projectId;
-            con.Open();
+            await con.OpenAsync();
             SqlDataReader reader = cmd.ExecuteReader();
             SqlReaderProjectLink sqlReader = new SqlReaderProjectLink();
             items = await sqlReader.Getdata(reader);
 
           }
-
+            await con.CloseAsync();
         }
 
 
@@ -212,8 +225,10 @@ namespace Portfolio.WebApp.Concrete
             {
                 message = "Reading Database Error:\nMessage:  " + ex.Message;
                 Notification.PostMessage(message);
+                GC.Collect();
                 throw new Exception(ex.Message);
             }
+            GC.Collect();
             return items;
         }
 
@@ -230,13 +245,13 @@ namespace Portfolio.WebApp.Concrete
                     {
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
-                        con.Open();
+                        await con.OpenAsync();
                         SqlDataReader reader = cmd.ExecuteReader();
                         SqlReaderProjectLink sqlReader = new SqlReaderProjectLink();
                         itemsFound = await sqlReader.Getdata(reader);
 
                     }
-
+                    await con.CloseAsync();
                 }
 
 
@@ -247,8 +262,11 @@ namespace Portfolio.WebApp.Concrete
 
                 Notification.PostMessage(message);
 
-                if (itemsFound == null || itemsFound.Count ==0)
+                if (itemsFound == null || itemsFound.Count ==0) {
+                    GC.Collect();
                     throw new NullReferenceException("Did not return any Project Links");
+                }
+
 
 
             }
@@ -256,8 +274,10 @@ namespace Portfolio.WebApp.Concrete
             {
                 message = "Reading Database Error:\nMessage:  " + ex.Message;
                 Notification.PostMessage(message);
+                GC.Collect();
                 throw new Exception(ex.Message);
             }
+            GC.Collect();
             return itemsFound;
         }
 
@@ -273,16 +293,20 @@ namespace Portfolio.WebApp.Concrete
                     {
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;
                         cmd.Parameters.Add("@Id", SqlDbType.VarChar).Value = ItemId;
-                        con.Open();
+                        await con.OpenAsync();
                         SqlDataReader reader = cmd.ExecuteReader();
                         SqlReaderProjectLink sqlReader = new SqlReaderProjectLink();
                         results = await sqlReader.Getdata(reader);
 
                     }
+                    await con.CloseAsync();
 
                     }
-                if (results.Count==0 || results == null)
-                    throw new NullReferenceException("Project Link " + ItemId + " was not found");
+                if (results.Count==0 || results == null) {
+                        GC.Collect();
+                        throw new NullReferenceException("Project Link " + ItemId + " was not found");
+                }
+
                 Found = results[0];
                 message = "Found Project Link: " + Found.ID + " in the Portfolio DB";
                 Notification.PostMessage(message);
@@ -291,8 +315,10 @@ namespace Portfolio.WebApp.Concrete
             {
                 message = "Read Database Error while looking for ProjectLink with ID: " + ItemId + "\n" + ex.Message;
                 Notification.PostMessage(message);
+                GC.Collect();
                 throw new Exception(message);
             }
+            GC.Collect();
             return Found;
         }
 
@@ -328,16 +354,18 @@ namespace Portfolio.WebApp.Concrete
             cmd.Parameters.Add("@Description", SqlDbType.NVarChar).Value = ItemToUpdate.Description;
 
 
-            con.Open();
+            await con.OpenAsync();
             SqlDataReader reader = cmd.ExecuteReader();
             SqlReaderProjectLink sqlReader = new SqlReaderProjectLink();
             results = await sqlReader.Getdata(reader);
-
+            GC.Collect();
           }
+          await con.CloseAsync();
         }
         if (results.Count == 0 || results == null) {
             message = "Updated Project Link " + ItemToUpdate.ID + " was not returned from database";
             Notification.PostMessage(message);
+            GC.Collect();
           throw new NullReferenceException(message);
         }
                 UpdatedProjectLink = results[0];
@@ -350,8 +378,10 @@ namespace Portfolio.WebApp.Concrete
             {
                 message = "Read Database Error while looking for ProjectLink with ID: " + ItemToUpdate.ID + "\n";
                 Notification.PostMessage(message);
+                GC.Collect();
                 throw new Exception(message);
             }
+            GC.Collect();
             return UpdatedProjectLink;
         }
 

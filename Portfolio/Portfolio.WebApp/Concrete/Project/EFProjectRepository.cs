@@ -36,6 +36,7 @@ namespace Portfolio.WebApp.Concrete
             {
                 message = "Error: ProjectCreatorID is null or empty";
                 Notification.PostMessage(message);
+                GC.Collect();
                 throw new Exception(message);
             }
             try
@@ -56,7 +57,7 @@ namespace Portfolio.WebApp.Concrete
                   cmd.Parameters.Add("@Banner", SqlDbType.NText).Value = ItemToCreate.Banner;
                   cmd.Parameters.Add("@Published", System.Data.SqlDbType.Bit).Value = ItemToCreate.Published;
 
-                  con.Open();
+                  await con.OpenAsync();
 
                   SqlDataReader reader = cmd.ExecuteReader();
 
@@ -64,6 +65,8 @@ namespace Portfolio.WebApp.Concrete
                   results = await sqlReader.Getdata(reader);
 
                 }
+                await con.CloseAsync();
+                GC.Collect();
               }
               if (results.Count == 0 || results == null)
               {
@@ -82,8 +85,10 @@ namespace Portfolio.WebApp.Concrete
 
                 message = "Error writing Project to PortfolioDB: \n" +ItemToCreate + "\n" + "Error Message: " + ex.Message;
                 Notification.PostMessage(message);
+                GC.Collect();
                 throw new Exception(message);
             }
+            GC.Collect();
             return ItemCreated;
         }
 
@@ -105,7 +110,7 @@ namespace Portfolio.WebApp.Concrete
               cmd.Parameters.Add("@ID", SqlDbType.VarChar).Value = ItemToDeleteID;
 
 
-              con.Open();
+              await con.OpenAsync();
 
               SqlDataReader reader = cmd.ExecuteReader();
 
@@ -113,6 +118,7 @@ namespace Portfolio.WebApp.Concrete
               results = await sqlReader.Getdata(reader);
 
             }
+            await con.CloseAsync();
           }
 
           // message = "Project with ID: " + ItemToDeleteID + " has been DELETED";
@@ -123,9 +129,10 @@ namespace Portfolio.WebApp.Concrete
         {
           message = "Deleting Project with ID " + ItemToDeleteID + " from Database has failed.   \nError: Message:  " + ex.Message + "\n";
           Notification.PostMessage(message);
+          GC.Collect();
           throw new Exception(message);
         }
-
+        GC.Collect();
       }
       else
       {
@@ -147,8 +154,10 @@ namespace Portfolio.WebApp.Concrete
                 message = "Reading Database Error looking for Project ID " +
                     ItemId + "\nMessage:  " + ex.Message;
                 Notification.PostMessage(message);
+                GC.Collect();
                 throw new Exception(message);
             }
+            GC.Collect();
             return Found;
         }
 
@@ -162,20 +171,22 @@ namespace Portfolio.WebApp.Concrete
                 {
                   cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
-                  con.Open();
+                  await con.OpenAsync();
                   SqlDataReader reader = cmd.ExecuteReader();
                   SqlReaderProject sqlReader = new SqlReaderProject();
                   results = await sqlReader.Getdata(reader);
 
                 }
 
-
+              await con.CloseAsync();
               }
+              GC.Collect();
     }
       catch (Exception ex)
       {
         message = "Reading Database Error:\nMessage:  " + ex.Message;
         Notification.PostMessage(message);
+        GC.Collect();
         throw new Exception(ex.Message);
   }
       return results;
@@ -194,15 +205,17 @@ namespace Portfolio.WebApp.Concrete
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
             cmd.Parameters.Add("@pcId", SqlDbType.VarChar).Value = ProjectCreatorID;
 
-            con.Open();
+            await con.OpenAsync();
             SqlDataReader reader = cmd.ExecuteReader();
             SqlReaderProject sqlReader = new SqlReaderProject();
             projects = await sqlReader.Getdata(reader);
 
           }
+          await con.CloseAsync();
           if (projects == null) {
               message = "Did not return any Projects";
               Notification.PostMessage(message);
+              GC.Collect();
               throw new NullReferenceException(message);
           }
           else {
@@ -215,12 +228,13 @@ namespace Portfolio.WebApp.Concrete
           }
         }
 
-
+        GC.Collect();
       }
       catch (Exception ex)
       {
         message = "Reading Database Error:\nMessage:  " + ex.Message;
         Notification.PostMessage(message);
+        GC.Collect();
         throw new Exception(ex.Message);
       }
       return projects;
@@ -240,11 +254,11 @@ namespace Portfolio.WebApp.Concrete
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
             cmd.Parameters.Add("@Id", SqlDbType.VarChar).Value = ItemId;
 
-            con.Open();
+            await con.OpenAsync();
             SqlDataReader reader = cmd.ExecuteReader();
             SqlReaderProject sqlReader = new SqlReaderProject();
             projects = await sqlReader.Getdata(reader);
-
+            await con.CloseAsync();
           }
 
           if (projects == null) {
@@ -261,7 +275,7 @@ namespace Portfolio.WebApp.Concrete
 
 
           }
-
+  GC.Collect();
 
         }
             }
@@ -269,6 +283,7 @@ namespace Portfolio.WebApp.Concrete
             {
                 message = "Read Database Error while looking for Project with ID: " + ItemId + "\n" + ex.Message;
                 Notification.PostMessage(message);
+                GC.Collect();
                 throw new Exception(message);
             }
             return Found;
@@ -305,13 +320,13 @@ namespace Portfolio.WebApp.Concrete
 
 
 
-                    con.Open();
+                    await con.OpenAsync();
                     SqlDataReader reader = cmd.ExecuteReader();
                     SqlReaderProject sqlReader = new SqlReaderProject();
                     results = await sqlReader.Getdata(reader);
 
                 }
-
+                await con.CloseAsync();
                 if (results.Count > 0) {
                   updatedProject = results[0];
                   message = "Project Creator was updated in PortFolio DB to: \n" + updatedProject;
@@ -325,7 +340,7 @@ namespace Portfolio.WebApp.Concrete
               }
 
 
-
+        GC.Collect();
 
       }
       catch (Exception ex) {

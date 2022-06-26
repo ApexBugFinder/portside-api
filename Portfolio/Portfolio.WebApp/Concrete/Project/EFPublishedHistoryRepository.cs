@@ -43,6 +43,7 @@ namespace Portfolio.WebApp.Concrete
                 Notification.PostMessage(message);
                 throw new Exception(ex.Message);
             }
+            GC.Collect();
             return publishedHistories;
         }
 
@@ -69,6 +70,7 @@ namespace Portfolio.WebApp.Concrete
                 Notification.PostMessage(message);
                 throw new Exception(message);
             }
+            GC.Collect();
             return ItemToCreate;
         }
 
@@ -92,6 +94,7 @@ namespace Portfolio.WebApp.Concrete
                 {
                     message = "Deleting PublishedHistory with ID " + ItemToDeleteID + " from Database has failed.   \nError: Message:  " + ex.Message + "\n";
                     Notification.PostMessage(message);
+                    GC.Collect();
                     throw new Exception(message);
                 }
 
@@ -101,6 +104,7 @@ namespace Portfolio.WebApp.Concrete
                 message = "PublishedHistory with ID: " + ItemToDeleteID + " does not Exist, WARNING: cannot DELETE";
                 Notification.PostMessage(message);
             }
+            GC.Collect();
         }
 
         public async Task<bool> Exists(string ItemId)
@@ -115,8 +119,10 @@ namespace Portfolio.WebApp.Concrete
             {
                 message = "Reading Database Error looking for PublishedHistory ID " + ItemId + "\nMessage:  " + ex.Message;
                 Notification.PostMessage(message);
+                GC.Collect();
                 throw new Exception(message);
             }
+            GC.Collect();
             return Found;
         }
 
@@ -133,8 +139,10 @@ namespace Portfolio.WebApp.Concrete
             {
                 message = "Read Database Error while looking for PublishedHistory with ID: " + ItemId + "\n" + ex.Message;
                 Notification.PostMessage(message);
+                GC.Collect();
                 throw new Exception(message);
             }
+            GC.Collect();
             return Found;
         }
 
@@ -162,8 +170,10 @@ namespace Portfolio.WebApp.Concrete
             {
                 message = "Update Database Error while updating PublishedHistory with ID: " + ItemToUpdate.ID + "\n";
                 Notification.PostMessage(message);
+                GC.Collect();
                 throw new Exception(message);
             }
+            GC.Collect();
             return ItemToUpdate;
         }
 
@@ -188,8 +198,10 @@ namespace Portfolio.WebApp.Concrete
             {
                 message = "Reading Database Error:\nMessage:  " + ex.Message;
                 Notification.PostMessage(message);
+                GC.Collect();
                 throw new Exception(ex.Message);
             }
+            GC.Collect(); 
             return itemsFound;
         }
     }
