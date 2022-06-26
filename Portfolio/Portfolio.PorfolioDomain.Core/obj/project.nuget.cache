@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "sexNWbSut67qG6pstndVaxMf242BL8RPE4BuAJhhnzyJu1mqoGXCRtmichMNAHpJ2acjMx0Tla3ScEW2AXNt6w==",
+  "dgSpecHash": "bj29/NdVEteVOdwNw6bRt0GeQN3Qccm+RK3S5SzcVJaY5xpYEMp2UelW4/3MUuYu3L9SXOtiWoZJqEHHi3Kr6Q==",
   "success": true,
-  "projectFilePath": "/home/apexbugfinder/portfolio/webapi/portfolio/Portfolio/Portfolio.PorfolioDomain.Core/Portfolio.PorfolioDomain.Core.csproj",
+  "projectFilePath": "/home/apexbugfinder/portfolio/portfolio-webapi/Portfolio/Portfolio.PorfolioDomain.Core/Portfolio.PorfolioDomain.Core.csproj",
   "expectedPackageFiles": [
     "/home/apexbugfinder/.nuget/packages/microsoft.aspnetcore.authentication.abstractions/2.2.0/microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "/home/apexbugfinder/.nuget/packages/microsoft.aspnetcore.authentication.core/2.2.0/microsoft.aspnetcore.authentication.core.2.2.0.nupkg.sha512",
@@ -100,7 +100,9 @@
     "/home/apexbugfinder/.nuget/packages/system.text.encodings.web/4.5.0/system.text.encodings.web.4.5.0.nupkg.sha512",
     "/home/apexbugfinder/.nuget/packages/system.threading/4.0.11/system.threading.4.0.11.nupkg.sha512",
     "/home/apexbugfinder/.nuget/packages/system.threading.tasks/4.0.11/system.threading.tasks.4.0.11.nupkg.sha512",
-    "/home/apexbugfinder/.nuget/packages/system.threading.tasks.extensions/4.5.1/system.threading.tasks.extensions.4.5.1.nupkg.sha512"
+    "/home/apexbugfinder/.nuget/packages/system.threading.tasks.extensions/4.5.1/system.threading.tasks.extensions.4.5.1.nupkg.sha512",
+    "/home/apexbugfinder/.nuget/packages/microsoft.netcore.app.ref/3.1.0/microsoft.netcore.app.ref.3.1.0.nupkg.sha512",
+    "/home/apexbugfinder/.nuget/packages/microsoft.aspnetcore.app.ref/3.1.10/microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512"
   ],
   "logs": []
 }

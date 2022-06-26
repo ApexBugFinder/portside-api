@@ -127,7 +127,7 @@
 	</resheader>
 	<data name="connection" xml:space="preserve">
 		<value>
-			Server=198.211.29.93,1433;Database=PortfolioDB;User Id=sa;Password="Apple";MultipleActiveResultSets=true;Persist Security Info=True;
+			Server=23.94.40.225,1433;Database=PortfolioDB;User Id=sa;Password="Apple";MultipleActiveResultSets=true;Persist Security Info=True;
 
 		</value>
 	</data>

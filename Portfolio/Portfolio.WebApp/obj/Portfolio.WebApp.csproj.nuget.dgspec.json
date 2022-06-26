@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/apexbugfinder/portfolio/webapi/portfolio/Portfolio/Portfolio.WebApp/Portfolio.WebApp.csproj": {}
+    "/home/apexbugfinder/portfolio/portfolio-webapi/Portfolio/Portfolio.WebApp/Portfolio.WebApp.csproj": {}
   },
   "projects": {
-    "/home/apexbugfinder/portfolio/webapi/portfolio/Portfolio/Portfolio.PorfolioDomain.Core/Portfolio.PorfolioDomain.Core.csproj": {
+    "/home/apexbugfinder/portfolio/portfolio-webapi/Portfolio/Portfolio.PorfolioDomain.Core/Portfolio.PorfolioDomain.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/apexbugfinder/portfolio/webapi/portfolio/Portfolio/Portfolio.PorfolioDomain.Core/Portfolio.PorfolioDomain.Core.csproj",
+        "projectUniqueName": "/home/apexbugfinder/portfolio/portfolio-webapi/Portfolio/Portfolio.PorfolioDomain.Core/Portfolio.PorfolioDomain.Core.csproj",
         "projectName": "Portfolio.PorfolioDomain.Core",
-        "projectPath": "/home/apexbugfinder/portfolio/webapi/portfolio/Portfolio/Portfolio.PorfolioDomain.Core/Portfolio.PorfolioDomain.Core.csproj",
+        "projectPath": "/home/apexbugfinder/portfolio/portfolio-webapi/Portfolio/Portfolio.PorfolioDomain.Core/Portfolio.PorfolioDomain.Core.csproj",
         "packagesPath": "/home/apexbugfinder/.nuget/packages/",
-        "outputPath": "/home/apexbugfinder/portfolio/webapi/portfolio/Portfolio/Portfolio.PorfolioDomain.Core/obj/",
+        "outputPath": "/home/apexbugfinder/portfolio/portfolio-webapi/Portfolio/Portfolio.PorfolioDomain.Core/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/apexbugfinder/.nuget/NuGet/NuGet.Config"
@@ -75,23 +75,33 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[3.1.10, 3.1.10]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[3.1.0, 3.1.0]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/5.0.401/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/home/apexbugfinder/.dotnet/sdk/6.0.103/RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/home/apexbugfinder/portfolio/webapi/portfolio/Portfolio/Portfolio.WebApp/Portfolio.WebApp.csproj": {
+    "/home/apexbugfinder/portfolio/portfolio-webapi/Portfolio/Portfolio.WebApp/Portfolio.WebApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/apexbugfinder/portfolio/webapi/portfolio/Portfolio/Portfolio.WebApp/Portfolio.WebApp.csproj",
+        "projectUniqueName": "/home/apexbugfinder/portfolio/portfolio-webapi/Portfolio/Portfolio.WebApp/Portfolio.WebApp.csproj",
         "projectName": "Portfolio.WebApp",
-        "projectPath": "/home/apexbugfinder/portfolio/webapi/portfolio/Portfolio/Portfolio.WebApp/Portfolio.WebApp.csproj",
+        "projectPath": "/home/apexbugfinder/portfolio/portfolio-webapi/Portfolio/Portfolio.WebApp/Portfolio.WebApp.csproj",
         "packagesPath": "/home/apexbugfinder/.nuget/packages/",
-        "outputPath": "/home/apexbugfinder/portfolio/webapi/portfolio/Portfolio/Portfolio.WebApp/obj/",
+        "outputPath": "/home/apexbugfinder/portfolio/portfolio-webapi/Portfolio/Portfolio.WebApp/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/apexbugfinder/.nuget/NuGet/NuGet.Config"
@@ -106,8 +116,8 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "/home/apexbugfinder/portfolio/webapi/portfolio/Portfolio/Portfolio.PorfolioDomain.Core/Portfolio.PorfolioDomain.Core.csproj": {
-                "projectPath": "/home/apexbugfinder/portfolio/webapi/portfolio/Portfolio/Portfolio.PorfolioDomain.Core/Portfolio.PorfolioDomain.Core.csproj"
+              "/home/apexbugfinder/portfolio/portfolio-webapi/Portfolio/Portfolio.PorfolioDomain.Core/Portfolio.PorfolioDomain.Core.csproj": {
+                "projectPath": "/home/apexbugfinder/portfolio/portfolio-webapi/Portfolio/Portfolio.PorfolioDomain.Core/Portfolio.PorfolioDomain.Core.csproj"
               }
             }
           }
@@ -201,8 +211,16 @@
           "warn": true,
           "downloadDependencies": [
             {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[3.1.10, 3.1.10]"
+            },
+            {
               "name": "Microsoft.NETCore.App.Host.linux-x64",
-              "version": "[3.1.19, 3.1.19]"
+              "version": "[3.1.23, 3.1.23]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[3.1.0, 3.1.0]"
             }
           ],
           "frameworkReferences": {
@@ -213,7 +231,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/5.0.401/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/home/apexbugfinder/.dotnet/sdk/6.0.103/RuntimeIdentifierGraph.json"
         }
       }
     }

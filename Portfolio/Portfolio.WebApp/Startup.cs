@@ -81,7 +81,7 @@ services.AddAuthentication()
 
     services.Configure<ForwardedHeadersOptions>(options => {
        options.ForwardLimit = 3;
-       options.KnownProxies.Add(IPAddress.Parse("198.211.29.93"));
+       options.KnownProxies.Add(IPAddress.Parse("23.94.40.225"));
        options.ForwardedForHeaderName = "X-Forwarded-For-Webapi-Portside";
     });
      services.AddCertificateForwarding(options => {
@@ -131,14 +131,19 @@ services.AddAuthentication()
             {
                 builder.WithOrigins(
                  //API
-                "https://198.211.29.93:8085",
-                "http://198.211.29.93:8086",
-                "https://198.211.29.93",
+
+                "https://23.94.40.225:8085",
+                "http://23.94.40.225:8086",
+                "https://23.94.40.225",
+
                 "https://webapi.portside.cyou",
                 "http://webapi.portside.cyou",
 
                         "http://localhost:8000", //IDP
-                        "https://198.211.29.93:8000",
+
+
+                        "https://23.94.40.225:8000",
+
                         "https://identity.portside.cyou",
                         "http://identity.portside.cyou",
 
@@ -147,8 +152,8 @@ services.AddAuthentication()
                         "https://portside.cyou",
 
                         "http://localhost:3000",
-                        "https://198.211.29.93",
-                        "http://198.211.29.93:3000")
+                        "https://23.94.40.225",
+                        "http://23.94.40.225:3000")
 
                         .AllowAnyHeader()
                         .AllowAnyMethod()
@@ -158,7 +163,8 @@ services.AddAuthentication()
       });
 
       // var connectionString = Configuration["ConnectionStrings:PortfolioDomainDB"];
-       var connectionString = "Server=198.211.29.93,1433; Database = PortfolioDB;User Id = sa;Password = Apple&Pie79;MultipleActiveResultSets=true;Persist Security Info=True;";
+       var connectionString = "Server=localhost,1433; Database = PortfolioDB;User Id = sa;Password ='Apple&Pie79';MultipleActiveResultSets=true;Persist Security Info=True;";
+      //  var connectionString = "Server=23.94.40.225,1433; Database = PortfolioDB;User Id = sa;Password = Apple&Pie79;MultipleActiveResultSets=true;Persist Security Info=True;";
       //var windowString = "Server=localhost,1433;Database=PortfolioDomainDB;User Id=Orville;Password=pass@123;Trusted_Connection=True;Persist Security Info=True;";
       // var linuxString = "Server=localhost,1433;Database=PortfolioDomainDB;User Id=sa;Password=Yukon900;Trusted_Connection=True;Persist Security Info=True;";
       services.AddDbContext<PortfolioContext>(o => o.UseSqlServer(connectionString));

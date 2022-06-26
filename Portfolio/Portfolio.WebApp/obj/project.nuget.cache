@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/BhGozu1qxAZBw+V/H9F7Aqa2F4nJaR41yCpZo1FWaxl782TtgEdvctGmvjyWTfxeAGRVcoCRKTmoV2HD3tNlg==",
+  "dgSpecHash": "JgBC8UDq9+ExTGy+WBAIklfi3h9LcUo3tj+1ZPloKgs4tUlApjLSLlN0mb576fgYHaaOHFbQQH+zv1cL95bodw==",
   "success": true,
-  "projectFilePath": "/home/apexbugfinder/portfolio/webapi/portfolio/Portfolio/Portfolio.WebApp/Portfolio.WebApp.csproj",
+  "projectFilePath": "/home/apexbugfinder/portfolio/portfolio-webapi/Portfolio/Portfolio.WebApp/Portfolio.WebApp.csproj",
   "expectedPackageFiles": [
     "/home/apexbugfinder/.nuget/packages/automapper/10.1.1/automapper.10.1.1.nupkg.sha512",
     "/home/apexbugfinder/.nuget/packages/identitymodel/5.1.0/identitymodel.5.1.0.nupkg.sha512",
@@ -153,7 +153,9 @@
     "/home/apexbugfinder/.nuget/packages/system.xml.xdocument/4.3.0/system.xml.xdocument.4.3.0.nupkg.sha512",
     "/home/apexbugfinder/.nuget/packages/system.xml.xmldocument/4.3.0/system.xml.xmldocument.4.3.0.nupkg.sha512",
     "/home/apexbugfinder/.nuget/packages/system.xml.xmlserializer/4.3.0/system.xml.xmlserializer.4.3.0.nupkg.sha512",
-    "/home/apexbugfinder/.nuget/packages/microsoft.netcore.app.host.linux-x64/3.1.19/microsoft.netcore.app.host.linux-x64.3.1.19.nupkg.sha512"
+    "/home/apexbugfinder/.nuget/packages/microsoft.netcore.app.ref/3.1.0/microsoft.netcore.app.ref.3.1.0.nupkg.sha512",
+    "/home/apexbugfinder/.nuget/packages/microsoft.aspnetcore.app.ref/3.1.10/microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512",
+    "/home/apexbugfinder/.nuget/packages/microsoft.netcore.app.host.linux-x64/3.1.23/microsoft.netcore.app.host.linux-x64.3.1.23.nupkg.sha512"
   ],
   "logs": [
     {
