@@ -163,7 +163,7 @@ services.AddAuthentication()
       });
 
       // var connectionString = Configuration["ConnectionStrings:PortfolioDomainDB"];
-       var connectionString = "Server=localhost,1433; Database = PortfolioDB;User Id = sa;Password ='Apple&Pie79';MultipleActiveResultSets=true;Persist Security Info=True;";
+       var connectionString = "Server=23.94.40.225,1433; Database = PortfolioDB;User Id = sa;Password ='Apple&Pie79';MultipleActiveResultSets=true;Persist Security Info=True;";
       //  var connectionString = "Server=23.94.40.225,1433; Database = PortfolioDB;User Id = sa;Password = Apple&Pie79;MultipleActiveResultSets=true;Persist Security Info=True;";
       //var windowString = "Server=localhost,1433;Database=PortfolioDomainDB;User Id=Orville;Password=pass@123;Trusted_Connection=True;Persist Security Info=True;";
       // var linuxString = "Server=localhost,1433;Database=PortfolioDomainDB;User Id=sa;Password=Yukon900;Trusted_Connection=True;Persist Security Info=True;";

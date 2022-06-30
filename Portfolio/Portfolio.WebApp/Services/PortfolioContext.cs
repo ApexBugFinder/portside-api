@@ -12,8 +12,8 @@ namespace Portfolio.WebApp.Services
     public class PortfolioContext : DbContext
     {
         public PortfolioContext() { }
-        // private const string connect = "Server=23.94.40.225,1433;Database=PortfolioDB;User Id=sa;Password='Apple&Pie79';MultipleActiveResultSets=true;Persist Security Info=True;";
-        private const string connect = "Server=localhost,1433;Database=PortfolioDB;User Id=sa;Password='Apple&Pie79';MultipleActiveResultSets=true;Persist Security Info=True;";
+        private const string connect = "Server=23.94.40.225,1433;Database=PortfolioDB;User Id=sa;Password='Apple&Pie79';MultipleActiveResultSets=true;Persist Security Info=True;";
+        // private const string connect = "Server=localhost,1433;Database=PortfolioDB;User Id=sa;Password='Apple&Pie79';MultipleActiveResultSets=true;Persist Security Info=True;";
         private static readonly DbContextOptions<PortfolioContext> options =
             new DbContextOptionsBuilder<PortfolioContext>().UseSqlServer(connect).Options;
 

@@ -4994,7 +4994,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/home/apexbugfinder/.dotnet/sdk/6.0.103/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/home/apexbugfinder/.dotnet/sdk/6.0.301/RuntimeIdentifierGraph.json"
       }
     }
   }

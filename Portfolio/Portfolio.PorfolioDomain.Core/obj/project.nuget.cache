@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "bj29/NdVEteVOdwNw6bRt0GeQN3Qccm+RK3S5SzcVJaY5xpYEMp2UelW4/3MUuYu3L9SXOtiWoZJqEHHi3Kr6Q==",
+  "dgSpecHash": "Hfb3+MB5tFw0s63X8qf2NUopzqlMK3z8VCLuEFqaok/am0UzpN50dhpUBDF4FKLVQSOw1R7BVE/55ZEnWmoOKQ==",
   "success": true,
   "projectFilePath": "/home/apexbugfinder/portfolio/portfolio-webapi/Portfolio/Portfolio.PorfolioDomain.Core/Portfolio.PorfolioDomain.Core.csproj",
   "expectedPackageFiles": [
