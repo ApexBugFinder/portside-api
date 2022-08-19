@@ -2,7 +2,8 @@
 version: '3.4'
 services:
   portfoliowebapp:
-    image: portfolio/webapi:1.0
+    image: obasi79/portfolio:webapi
+      
     stdin_open: true # docker run -i
     tty: true        # docker run -t
     volumes:
