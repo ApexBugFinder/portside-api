@@ -5,7 +5,9 @@ What is Portside?
 Portside is a portfolio website that focuses on allowing the user/developer to present their projects in style.
 
 This is the webserver of the project. The project's backend consists of a 2 other supporting dotnet apis, the webserver and the identity server and a frontEnd angular api.
+
 The repository for the frontEnd can be viewed at <a href="https://github.com/ApexBugFinder/portside-front" target="_blank">Portside: FrontEnd</a>
+
 The repository identity server can be viewd at <a href="https://github.com/ApexBugFinder/portside-idp" target="_blank">Portside: Microsoft Identity Server 4.0</a>
 
 ## Development server
