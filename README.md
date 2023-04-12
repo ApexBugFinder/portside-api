@@ -9,7 +9,9 @@ The repository for the frontEnd can be viewed at https://github.com/ApexBugFinde
 The repository identity server can be viewd at https://github.com/ApexBugFinder/portside-idp
 
 ## Development server
-Run ng serve for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files. This project is designed to run on a private server with SSL keys and access to the backend apis a restricted
+dotnet build and dotnet run for a dev server. Navigate to http://localhost:4200/. 
+
+## Endpoints
 
 ## Problems to fix in Beta Version
 ngrx confusion created error viewing profiles
